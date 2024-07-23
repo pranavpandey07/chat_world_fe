@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import AuthContext from './AuthContext';
 import './LoginPage.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { loginUser } = useContext(AuthContext);
+
+  if (!loginUser) {
+    throw new Error('AuthContext is not properly set up');
+  }
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/chatting/user/login/', { email, password });
-      const userDetails = response.data.user_details;
-      // Save user details to local storage
-      localStorage.setItem('userDetails', JSON.stringify(userDetails));
+      await loginUser(email, password);
       navigate('/users_list');
     } catch (error) {
-      // handle error
+      console.error('Login failed:', error);
+      // Handle login error (e.g., display an error message to the user)
     }
   };
 

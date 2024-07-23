@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from './AxiosInstance';
 import './UserListPage.css';
 
 const ReceivedPendingRequestsPage = ({ userId }) => {
@@ -8,7 +8,7 @@ const ReceivedPendingRequestsPage = ({ userId }) => {
   useEffect(() => {
     const fetchReceivedPendingRequests = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/chatting/friend_request/get_friend_list/', {
+        const response = await axiosInstance.get('/chatting/friend_request/get_friend_list/', {
           params: { user_id: userId, action: 'received_pending_request' }
         });
         setUsers(response.data.response);

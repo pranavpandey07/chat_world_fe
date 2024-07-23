@@ -1,47 +1,52 @@
+/* Styles for the main container of the page */
 .main-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    color: white;
-    text-align: center;
-  }
-  
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .content h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  .main-page-links {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .main-page-link {
-    padding: 15px 30px;
-    font-size: 1.2em;
-    color: #fff;
-    background-color: rgba(0, 123, 255, 0.8);
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .main-page-link:hover {
-    background-color: rgba(0, 123, 255, 1);
-    transform: scale(1.05);
-  }
-  
+  display: flex; /* Use Flexbox layout to arrange items */
+  justify-content: center; /* Center items horizontally in the container */
+  align-items: center; /* Center items vertically in the container */
+  height: 100vh; /* Set the height to 100% of the viewport height */
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Gradient background from purple to blue */
+  color: white; /* Set text color to white */
+  text-align: center; /* Center align the text */
+}
+
+/* Styles for the content inside the main page container */
+.content {
+  display: flex; /* Use Flexbox layout for the content */
+  flex-direction: column; /* Arrange child elements in a vertical column */
+  align-items: center; /* Center child elements horizontally */
+  padding: 20px; /* Add space inside the container */
+  border-radius: 10px; /* Round the corners of the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for a 3D effect */
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+}
+
+/* Styles for the heading inside the content */
+.content h1 {
+  font-size: 3em; /* Make the heading text large */
+  margin-bottom: 20px; /* Add space below the heading */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow to the text */
+}
+
+/* Styles for the container of the links */
+.main-page-links {
+  display: flex; /* Use Flexbox layout for the links container */
+  gap: 20px; /* Add space between the links */
+}
+
+/* Styles for individual link elements */
+.main-page-link {
+  padding: 15px 30px; /* Add space inside the link (like a button) */
+  font-size: 1.2em; /* Increase font size a little bit */
+  color: #fff; /* Set text color to white */
+  background-color: rgba(0, 123, 255, 0.8); /* Semi-transparent blue background */
+  border: none; /* Remove any border around the link */
+  border-radius: 5px; /* Round the corners of the link */
+  text-decoration: none; /* Remove underline from the link */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for background color and scaling effects */
+}
+
+/* Styles for the link when hovered over */
+.main-page-link:hover {
+  background-color: rgba(0, 123, 255, 1); /* Change background color to solid blue on hover */
+  transform: scale(1.05); /* Slightly enlarge the link on hover */
+}

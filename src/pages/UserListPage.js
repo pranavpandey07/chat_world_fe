@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from './AxiosInstance'; // Import your Axios instance
 import './UserListPage.css';
 
 const UserListPage = () => {
@@ -20,15 +20,16 @@ const UserListPage = () => {
 
     setLoggedInUser(userDetails);
 
-    // Fetch the list of users from the API
+    // Fetch the list of users from the API using axiosInstance
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/chatting/user/get_users', {
+        const response = await axiosInstance.get('http://localhost:8000/api/chatting/user/get_users', {
           params: { self_id: userDetails.id }
         });
         setUsers(response.data.response);
       } catch (error) {
         console.error('Error fetching users:', error);
+        // Handle error if needed (e.g., show a message to the user or log out)
       }
     };
 
@@ -47,7 +48,7 @@ const UserListPage = () => {
         {users && users.length > 0 ? (
           users.map(user => (
             <li key={user.id}>
-              <Link to={`/chat/${user.id}`}>
+              <Link to={`/chat/${user.id}/$`}>
                 {user.first_name} {user.last_name}
               </Link>
             </li>

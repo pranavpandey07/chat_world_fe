@@ -1,51 +1,67 @@
-/* src/pages/ChatWindow.css */
+/* ChatPage.css */
 .chat-window {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .messages {
   flex: 1;
   overflow-y: auto;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
   padding: 10px;
+  background-color: #f0f0f0;
 }
 
 .message {
-  padding: 10px;
+  display: flex;
   margin-bottom: 10px;
-  border-radius: 10px;
+  max-width: 60%;
 }
 
 .message.sent {
-  align-self: flex-end;
-  background-color: #dcf8c6;
+  justify-content: flex-end;
 }
 
 .message.received {
-  align-self: flex-start;
-  background-color: #fff;
+  justify-content: flex-start;
+}
+
+.message .text {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.message.sent .text {
+  background-color: #d0f0c0;
+}
+
+.message.received .text {
+  background-color: #e0e0e0;
 }
 
 .send-message {
   display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
 }
 
 .send-message input {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
 }
 
 .send-message button {
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
+  padding: 10px 20px;
   border: none;
-  border-radius: 5px;
-  margin-left: 10px;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
 }
