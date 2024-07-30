@@ -17,10 +17,20 @@ const ChatWindow = () => {
 
     const fetchMessages = async () => {
       try {
-        const response = await axiosInstance.get('/chatting/message/get_messages/', {
+        const response = await axiosInstance.get('/chatting/message/get_messages_new/', {
           params: { sender: loggedInUser.id, recipient: recipientIdNumber }
         });
-        setMessages(response.data.response);
+
+        // Flatten the messages structure
+        const fetchedMessages = response.data.response.flatMap(item => item.messages.map(message => ({
+          ...message,
+          date: item.date
+        })));
+
+        // Sort messages by timestamp
+        fetchedMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+        setMessages(fetchedMessages);
       } catch (error) {
         console.error('Error fetching messages:', error);
       }
@@ -36,7 +46,7 @@ const ChatWindow = () => {
   const sendMessage = async () => {
     if (newMessage.trim() === '') return;
     try {
-      await axiosInstance.post('/chatting/message/send_message/', {
+      await axiosInstance.post('/chatting/message/send_message_new/', {
         sender: loggedInUser.id,
         recipient: recipientIdNumber,
         text: newMessage
@@ -46,10 +56,20 @@ const ChatWindow = () => {
       // Refresh messages 1 second after sending a message
       setTimeout(async () => {
         try {
-          const response = await axiosInstance.get('/chatting/message/get_messages/', {
+          const response = await axiosInstance.get('/chatting/message/get_messages_new/', {
             params: { sender: loggedInUser.id, recipient: recipientIdNumber }
           });
-          setMessages(response.data.response);
+
+          // Flatten the messages structure
+          const fetchedMessages = response.data.response.flatMap(item => item.messages.map(message => ({
+            ...message,
+            date: item.date
+          })));
+
+          // Sort messages by timestamp
+          fetchedMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+          setMessages(fetchedMessages);
         } catch (error) {
           console.error('Error fetching messages after sending:', error);
         }
@@ -69,6 +89,7 @@ const ChatWindow = () => {
             className={`message ${message.sender === loggedInUser.id ? 'sent' : 'received'}`}
           >
             <div className="text">{message.text}</div>
+            <div className="timestamp">{new Date(message.timestamp).toLocaleString()}</div>
           </div>
         ))}
         <div ref={messagesEndRef} /> {/* Scroll to bottom */}

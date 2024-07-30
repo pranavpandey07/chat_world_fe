@@ -23,7 +23,7 @@ const UserListPage = () => {
     // Fetch the list of users from the API using axiosInstance
     const fetchUsers = async () => {
       try {
-        const response = await axiosInstance.get('http://localhost:8000/api/chatting/user/get_users', {
+        const response = await axiosInstance.get('/chatting/user/get_users', {
           params: { self_id: userDetails.id }
         });
         setUsers(response.data.response);
@@ -35,6 +35,24 @@ const UserListPage = () => {
 
     fetchUsers();
   }, [navigate]);
+
+  const sendFriendRequest = async (recipientId) => {
+    try {
+      const response = await axiosInstance.post('/chatting/friend_request/send_fr/', {
+        sender: loggedInUser.id,
+        recipient: recipientId
+      });
+
+      if (response.data.message === 'success') {
+        alert('Friend request sent!');
+      } else {
+        alert('Failed to send friend request.');
+      }
+    } catch (error) {
+      console.error('Error sending friend request:', error);
+      alert('Error sending friend request.');
+    }
+  };
 
   if (!loggedInUser) {
     return <div>Loading...</div>;
@@ -48,9 +66,8 @@ const UserListPage = () => {
         {users && users.length > 0 ? (
           users.map(user => (
             <li key={user.id}>
-              <Link to={`/chat/${user.id}/$`}>
-                {user.first_name} {user.last_name}
-              </Link>
+              {user.first_name} {user.last_name}
+              <button onClick={() => sendFriendRequest(user.id)}>Send Friend Request</button>
             </li>
           ))
         ) : (

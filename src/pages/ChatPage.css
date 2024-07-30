@@ -1,67 +1,78 @@
-/* ChatPage.css */
 .chat-window {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  background: #f9f9f9;
 }
 
 .messages {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
   overflow-y: auto;
   padding: 10px;
-  background-color: #f0f0f0;
+  margin-bottom: 10px;
 }
 
 .message {
-  display: flex;
-  margin-bottom: 10px;
-  max-width: 60%;
-}
-
-.message.sent {
-  justify-content: flex-end;
-}
-
-.message.received {
-  justify-content: flex-start;
-}
-
-.message .text {
+  margin-bottom: 15px;
   padding: 10px;
   border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  max-width: 70%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
 }
 
-.message.sent .text {
-  background-color: #d0f0c0;
+.sent {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+  text-align: right;
 }
 
-.message.received .text {
-  background-color: #e0e0e0;
+.received {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.text {
+  margin-bottom: 5px; /* Adjusted margin for space between text and timestamp */
+}
+
+.timestamp {
+  font-size: 0.75em;
+  color: #999;
+  margin-top: 5px;
+  text-align: right; /* Ensure the timestamp is aligned to the right */
 }
 
 .send-message {
   display: flex;
-  padding: 10px;
-  border-top: 1px solid #ddd;
-  background-color: #fff;
+  margin-top: 10px;
 }
 
 .send-message input {
   flex: 1;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
 }
 
 .send-message button {
-  padding: 10px 20px;
+  padding: 10px;
   border: none;
-  border-radius: 20px;
   background-color: #007bff;
-  color: #fff;
+  color: white;
+  border-radius: 0 5px 5px 0;
   cursor: pointer;
+}
+
+.send-message button:hover {
+  background-color: #0056b3;
 }
