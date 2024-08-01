@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/chat_world_fe/static/css/main.0c5e56ba.css",
+    "main.js": "/chat_world_fe/static/js/main.04998a76.js",
+    "static/js/453.1f4fc30a.chunk.js": "/chat_world_fe/static/js/453.1f4fc30a.chunk.js",
+    "index.html": "/chat_world_fe/index.html",
+    "main.0c5e56ba.css.map": "/chat_world_fe/static/css/main.0c5e56ba.css.map",
+    "main.04998a76.js.map": "/chat_world_fe/static/js/main.04998a76.js.map",
+    "453.1f4fc30a.chunk.js.map": "/chat_world_fe/static/js/453.1f4fc30a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c5e56ba.css",
+    "static/js/main.04998a76.js"
+  ]
+}
