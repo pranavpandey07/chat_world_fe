@@ -3,7 +3,7 @@ import {jwtDecode} from 'jwt-decode'; // Ensure correct import
 
 // Create an instance of Axios
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000/api',
+  baseURL: 'http://13.233.132.105:8080/api',
 });
 
 // Function to refresh token
